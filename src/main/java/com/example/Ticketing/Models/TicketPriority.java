@@ -1,49 +1,33 @@
 package com.example.Ticketing.Models;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 
-import java.util.List;
+import java.io.IOException;
 
-@Entity
-public class TicketPriority {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private Integer value;
-    @OneToMany
-    private List<Ticket> tickets;
+public enum TicketPriority {
+    LOW,
+    MEDIUM,
+    HIGH;
 
-    public Long getId() {
-        return id;
+    public static class Serializer extends JsonSerializer<TicketPriority> {
+        @Override
+        public void serialize(TicketPriority value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+            gen.writeString(value.name().toLowerCase());
+        }
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public void setValue(Integer value) {
-        this.value = value;
-    }
-
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public static class Deserializer extends JsonDeserializer<TicketPriority> {
+        @Override
+        public TicketPriority deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+            return TicketPriority.valueOf(p.getValueAsString().toUpperCase());
+        }
     }
 }
+
 
