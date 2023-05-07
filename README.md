@@ -26,36 +26,78 @@ This is a Spring Boot application for managing tickets for a large organization.
 - Docker
 - AWS S3
 
-#### End Points
+## End Points
+
+#### 1. User Authentication Endpoints
+
 User Registration
  ```
-http://127.0.0.1:8000/api/auth/register
+http://127.0.0.1:8080/api/auth/register
 ```
 Authenticate User
 
 ```
-http://127.0.0.1:8000/api/auth/authenticate
+http://127.0.0.1:8080/api/auth/authenticate
 ```
 
 Fetch Registered Users
 ```
-http://127.0.0.1:8000/api/auth/user/users
+http://127.0.0.1:8080/api/auth/user/users
 ```
 
 Fetch User details by Id
 ```
-http://127.0.0.1:8000/api/auth/user/users/1
+http://127.0.0.1:8080/api/auth/user/users/id
 ```
 Edit user details
 ```
-http://127.0.0.1:8000/api/auth/user/update/users/2
+http://127.0.0.1:8080/api/auth/user/update/users/id
 ```
 
 Delete user
 ```
-http://127.0.0.1:8000/api/auth/user/delete/user/3
+http://127.0.0.1:8080/api/auth/user/delete/user/id
 ```
 
+#### 2. Ticket Endpoints
 
+Create Ticket
+```
+http://127.0.0.1:8080/api/auth/tickets
+```
 
+         
+                 
+                 {
+                     "title": "Server down",
+                     "description": "Our website is down and we are not sure what is causing it.",
+                     "user": {
+                         "id": 1
+                     },
+                     "priority": "HIGH",
+                     "status": "OPEN"
+                 }
+                
 
+View Tickets 
+
+```
+http://127.0.0.1:8080/api/auth/tickets
+```
+
+View tickets by Id
+
+```
+http://127.0.0.1:8080/api/auth/tickets/id
+```
+Update tickets details
+
+```
+http://127.0.0.1:8080/api/auth/tickets/id
+```
+
+Delete Ticket
+
+```
+http://127.0.0.1:8080/api/auth/tickets/id
+```
