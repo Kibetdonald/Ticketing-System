@@ -25,3 +25,37 @@ This is a Spring Boot application for managing tickets for a large organization.
 - Spring MVC
 - Docker
 - AWS S3
+
+#### End Points
+User Registration
+ ```
+http://127.0.0.1:8000/api/auth/register
+```
+Authenticate User
+
+```
+http://127.0.0.1:8000/api/auth/authenticate
+```
+
+Fetch Registered Users
+```
+http://127.0.0.1:8000/api/auth/user/users
+```
+
+Fetch User details by Id
+```
+http://127.0.0.1:8000/api/auth/user/users/1
+```
+Edit user details
+```
+http://127.0.0.1:8000/api/auth/user/update/users/2
+```
+
+Delete user
+```
+http://127.0.0.1:8000/api/auth/user/delete/user/3
+```
+
+
+
+
