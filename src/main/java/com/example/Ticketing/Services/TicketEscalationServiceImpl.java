@@ -32,7 +32,10 @@ public class TicketEscalationServiceImpl implements TicketEscalationService {
     public void delete(TicketEscalation ticketEscalation) {
         ticketEscalationRepository.delete(ticketEscalation);
     }
-
+    @Override
+    public List<TicketEscalation> findByTicketId(Integer id) {
+        return ticketEscalationRepository.findByTicketId(id);
+    }
     @Override
     public TicketEscalation update(TicketEscalation ticketEscalation) {
         return ticketEscalationRepository.save(ticketEscalation);

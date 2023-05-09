@@ -37,6 +37,15 @@ public class TicketEscalationController {
         }
         return new ResponseEntity<>(ticketEscalation, HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<List<TicketEscalation>> searchByTicket(@RequestParam Integer id) {
+        List<TicketEscalation> ticketEscalations = ticketEscalationService.findByTicketId(id);
+        if (ticketEscalations.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(ticketEscalations, HttpStatus.OK);
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {

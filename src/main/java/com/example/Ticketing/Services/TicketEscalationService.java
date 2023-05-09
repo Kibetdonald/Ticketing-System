@@ -9,6 +9,8 @@ import java.util.List;
 public interface TicketEscalationService {
     TicketEscalation create(TicketEscalation ticketEscalation);
     List<TicketEscalation> findAll();
+
+    List<TicketEscalation> findByTicketId(Integer id);
     TicketEscalation findById(Integer id);
     void delete(TicketEscalation ticketEscalation);
     TicketEscalation update(TicketEscalation ticketEscalation);
