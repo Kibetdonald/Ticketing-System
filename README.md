@@ -1,4 +1,4 @@
-# Ticketing-System
+# Ticketing-System (Work in Progress) 
 This is a Spring Boot application for managing tickets for a large organization. It provides a web-based interface for administrators to manage tickets and users, as well as a set of RESTful APIs that can be consumed by a front-end application.
 
 
@@ -100,4 +100,47 @@ Delete Ticket
 
 ```
 http://127.0.0.1:8080/api/auth/tickets/id
+```
+#### 3. Ticket Escallation Endpoints
+
+Create Ticket Escallation
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/
+```
+
+                 
+           {
+               "ticket": {
+                 "id": 103
+               },
+               "user": {
+                 "id": 2
+               },
+               "escalatedAt": "2023-05-09T12:00:00",
+               "escalationReason": "The ticket has been pending for too long."
+           }
+
+                
+
+View Escallated Tickets 
+
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/
+```
+
+View Escallated ticket by Id
+
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/id
+```
+Update Escallated ticket details
+
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/id
+```
+
+Delete Escallated Ticket
+
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/id
 ```
