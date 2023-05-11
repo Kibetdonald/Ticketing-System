@@ -1,24 +1,26 @@
 package com.example.Ticketing.Models;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
+@Table(name = "notifications")
 public class Notification {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private String recipientEmail;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private String subject;
 
-    private String message;
+    @Column(nullable = false)
+    private String body;
 
-    private LocalDateTime createdDateTime;
+    @Column(nullable = false)
+    private Date createdAt;
 
-    private Boolean read;
     public Long getId() {
         return id;
     }
@@ -27,36 +29,44 @@ public class Notification {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public String getRecipientEmail() {
+        return recipientEmail;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRecipientEmail(String recipientEmail) {
+        this.recipientEmail = recipientEmail;
     }
 
-    public String getMessage() {
-        return message;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public LocalDateTime getCreatedDateTime() {
-        return createdDateTime;
+    public String getBody() {
+        return body;
     }
 
-    public void setCreatedDateTime(LocalDateTime createdDateTime) {
-        this.createdDateTime = createdDateTime;
+    public void setBody(String body) {
+        this.body = body;
     }
 
-    public Boolean getRead() {
-        return read;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setRead(Boolean read) {
-        this.read = read;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
+    public Notification() {}
+
+    public Notification(String recipientEmail, String subject, String body) {
+        this.recipientEmail = recipientEmail;
+        this.subject = subject;
+        this.body = body;
+        this.createdAt = new Date();
+    }
 }
