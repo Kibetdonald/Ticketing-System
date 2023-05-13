@@ -24,6 +24,15 @@ public class User implements UserDetails {
     private String firstName;
     private String lastName;
     private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private String password;
 
     // We need to annotate with @Enumerated annotation because it is an enum

@@ -1,6 +1,7 @@
 package com.example.Ticketing.Controllers;
 
 import com.example.Ticketing.Models.Ticket;
+import com.example.Ticketing.Models.User;
 import com.example.Ticketing.Services.EmailService;
 import com.example.Ticketing.Services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,17 @@ public class TicketController {
     public Ticket createTicket(@RequestBody Ticket ticket) {
         Ticket createdTicket = ticketService.createTicket(ticket);
 
+        User user = createdTicket.getUser();
+
         // Send email notification
-        String to = createdTicket.getUser().getEmail();
-        String subject = "Ticket Created";
-        String body = "Your ticket has been created with ID: " + createdTicket.getId();
-        emailService.sendEmail(to, subject, body);
+        // Check if the user object exists and has a valid email address
+        if (user != null && user.getEmail() != null) {
+            String to = user.getEmail();
+            String subject = "Ticket Created";
+            String body = "Your ticket has been created with ID: " + createdTicket.getId();
+            emailService.sendEmail(to, subject, body);
+        }
+
 
         return createdTicket;
     }
@@ -47,10 +54,15 @@ public class TicketController {
         Ticket updatedTicket = ticketService.updateTicket(id, ticketDetails);
 
         // Send email notification
-        String to = updatedTicket.getUser().getEmail();
-        String subject = "Ticket Updated";
-        String body = "Your ticket with ID: " + updatedTicket.getId() + " has been updated";
-        emailService.sendEmail(to, subject, body);
+        User user = updatedTicket.getUser();
+
+        // Check if the user object exists and has a valid email address
+        if (user != null && user.getEmail() != null) {
+            String to = updatedTicket.getUser().getEmail();
+            String subject = "Ticket Created";
+            String body = "Your ticket has been created with ID: " + updatedTicket.getId();
+            emailService.sendEmail(to, subject, body);
+        }
 
         return updatedTicket;
     }
