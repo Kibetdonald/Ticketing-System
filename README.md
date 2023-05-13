@@ -101,6 +101,13 @@ Delete Ticket
 ```
 http://127.0.0.1:8080/api/auth/tickets/id
 ```
+Search Ticket by Id
+
+```
+http://127.0.0.1:8080/api/auth/ticket-escalations/search?id={Id}
+
+```
+
 #### 3. Ticket Escallation Endpoints
 
 Create Ticket Escallation
