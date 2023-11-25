@@ -1,9 +1,6 @@
 # Ticketing-System (Work in Progress) 
 This is a Spring Boot application for managing tickets for a large organization. It provides a web-based interface for administrators to manage tickets and users, as well as a set of RESTful APIs that can be consumed by a front-end application.
 
-
-Sure, here's an updated version of the README.md file:
-
 ### Ticketing Management System
 This is a Spring Boot application for managing tickets for a large organization. It provides a web-based interface for administrators to manage tickets and users, as well as a set of RESTful APIs that can be consumed by a front-end application.
 
